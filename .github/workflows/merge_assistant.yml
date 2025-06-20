@@ -23,6 +23,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install gh
+      
+      - name: Install dependencies
+        run: pip install requests
 
       - name: Generate PR Diff
         run: |
