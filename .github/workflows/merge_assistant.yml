@@ -7,6 +7,11 @@ on:
 jobs:
   smart-merge:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_REPOSITORY: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+
 
     steps:
       - name: Checkout code
@@ -27,8 +32,6 @@ jobs:
       - name: Generate PR Diff
         run: |
           gh pr diff "${{ github.event.pull_request.number }}" > pr_diffs/github_pr.diff
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Summary Script
         run: python scripts/summarize_diff.py pr_diffs/github_pr.diff
