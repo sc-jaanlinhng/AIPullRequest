@@ -1,0 +1,25 @@
+diff --git a/dummy_project/main.py b/dummy_project/main.py
+index 94c6f0d..1a2c9b3 100644
+--- a/dummy_project/main.py
++++ b/dummy_project/main.py
+@@ -1,4 +1,6 @@
+ from utils import greet
+ 
+-if __name__ == "__main__":
+-    greet("World")
++def run():
++    greet("Smart Merge Assistant")
++
++if __name__ == "__main__":
++    run()
+diff --git a/dummy_project/utils.py b/dummy_project/utils.py
+index b6fc4c6..c9e4a93 100644
+--- a/dummy_project/utils.py
++++ b/dummy_project/utils.py
+@@ -1,2 +1,5 @@
+ def greet(name):
+-    print(f"Hello, {name}!")
++    print(f\"👋 Hello, {name}! Welcome.\")
++
++def farewell(name):
++    print(f\"👋 Goodbye, {name}! See you soon.\")

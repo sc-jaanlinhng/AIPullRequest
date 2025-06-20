@@ -1,0 +1,15 @@
+commit 1a2b3c
+Author: Amara Inas <amarainas@example.com>
+
+    dummy_project/main.py
+    dummy_project/utils.py
+
+commit 4d5e6f
+Author: Aryan Ried <aryanried@example.com>
+
+    dummy_project/utils.py
+
+commit 7g8h9i
+Author: Samuel Theo <samueltheo@example.com>
+
+    dummy_project/main.py

@@ -1,0 +1,40 @@
+name: Smart Merge Assistant
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  smart-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install gh
+
+      - name: Generate PR Diff
+        run: |
+          gh pr diff "${{ github.event.pull_request.number }}" > pr_diffs/github_pr.diff
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Summary Script
+        run: python scripts/summarize_diff.py pr_diffs/github_pr.diff
+
+      - name: Run Changelog Script
+        run: python scripts/generate_changelog.py pr_diffs/github_pr.diff
+
+      - name: Run Reviewer Suggestion Script
+        run: python scripts/suggest_reviewers.py pr_diffs/github_pr.diff
