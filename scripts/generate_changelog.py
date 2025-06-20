@@ -18,7 +18,7 @@
 import os
 import requests
 
-GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+GITHUB_TOKEN = os.environ['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']
 REPO = os.environ['GITHUB_REPOSITORY']
 PR_NUMBER = os.environ['PR_NUMBER']
 
