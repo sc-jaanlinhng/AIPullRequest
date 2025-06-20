@@ -28,7 +28,7 @@ jobs:
         run: |
           gh pr diff "${{ github.event.pull_request.number }}" > pr_diffs/github_pr.diff
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Summary Script
         run: python scripts/summarize_diff.py pr_diffs/github_pr.diff
